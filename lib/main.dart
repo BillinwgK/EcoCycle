@@ -6,6 +6,8 @@ void main() {
 }
 
 class EcoCycleApp extends StatelessWidget {
+  const EcoCycleApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

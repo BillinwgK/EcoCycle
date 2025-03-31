@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'register_screen.dart';
 import 'forgot_password_screen.dart';
+import '../constants/colors.dart'; // Asegúrate de importar los colores
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,84 +16,76 @@ class LoginScreen extends StatelessWidget {
         title: Text(
           'Iniciar Sesión',
           style: TextStyle(
-            fontFamily: 'Roboto', // Tipografía suavizada
-            fontWeight: FontWeight.w300, // Peso de la fuente más ligero
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w300,
+            color: AppColors.text,
           ),
         ),
-        centerTitle: true, // Centrar el título en el AppBar
-        backgroundColor: Colors.teal, // Color del AppBar
+        centerTitle: true,
+        backgroundColor: AppColors.button,
+        elevation: 0,
       ),
       body: Container(
-        color: Color(0xFF7FFFD4), // Fondo verde aguamarina
+        color: AppColors.base,
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(24.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'EcoCycle',
-                  style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal[900], // Color del texto
-                    fontFamily: 'Roboto', // Tipografía suavizada
-                  ),
+                // Logo EcoCycle (reemplaza con tu asset)
+                Image.asset(
+                  'assets/images/logo_ecocycle.png',
+                  width: 150,
+                  height: 150,
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: 32),
+                // Campo de Email
                 TextField(
                   controller: _emailController,
                   decoration: InputDecoration(
                     labelText: 'Correo Electrónico',
-                    labelStyle: TextStyle(
-                      color: Colors.teal[800],
-                      fontFamily: 'Roboto',
-                    ),
+                    labelStyle: TextStyle(color: AppColors.text),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.teal),
+                      borderSide: BorderSide(color: AppColors.border),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.teal, width: 2),
+                      borderSide: BorderSide(color: AppColors.button, width: 2),
                     ),
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: AppColors.white.withOpacity(0.9),
                   ),
                 ),
                 SizedBox(height: 16),
+                // Campo de Contraseña
                 TextField(
                   controller: _passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Contraseña',
-                    labelStyle: TextStyle(
-                      color: Colors.teal[800],
-                      fontFamily: 'Roboto',
-                    ),
+                    labelStyle: TextStyle(color: AppColors.text),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.teal),
+                      borderSide: BorderSide(color: AppColors.border),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.teal, width: 2),
+                      borderSide: BorderSide(color: AppColors.button, width: 2),
                     ),
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: AppColors.white.withOpacity(0.9),
                   ),
                 ),
-                SizedBox(height: 24),
+                SizedBox(height: 32),
+                // Botón de Iniciar Sesión
                 ElevatedButton(
-                  onPressed: () {
-                    // Lógica para iniciar sesión
-                    String email = _emailController.text;
-                    String password = _passwordController.text;
-                    print('Email: $email, Password: $password');
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.teal, // Color del botón
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    backgroundColor: AppColors.button,
+                    foregroundColor: AppColors.text,
+                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -105,25 +100,21 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 16),
+                // Enlaces
                 TextButton(
                   onPressed: () {
-                    // Navegar a la pantalla de registro
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => RegisterScreen()),
                     );
                   },
                   child: Text(
-                    '¿No tienes una cuenta? Regístrate',
-                    style: TextStyle(
-                      color: Colors.teal[800],
-                      fontFamily: 'Roboto',
-                    ),
+                    '¿No tienes cuenta? Regístrate',
+                    style: TextStyle(color: AppColors.text),
                   ),
                 ),
                 TextButton(
                   onPressed: () {
-                    // Navegar a la pantalla de recuperación de contraseña
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -133,10 +124,7 @@ class LoginScreen extends StatelessWidget {
                   },
                   child: Text(
                     '¿Olvidaste tu contraseña?',
-                    style: TextStyle(
-                      color: Colors.teal[800],
-                      fontFamily: 'Roboto',
-                    ),
+                    style: TextStyle(color: AppColors.text),
                   ),
                 ),
               ],

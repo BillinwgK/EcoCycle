@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import '../constants/colors.dart';
 
 class RegisterScreen extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
+
+  RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,49 +16,44 @@ class RegisterScreen extends StatelessWidget {
         title: Text(
           'Registro',
           style: TextStyle(
-            fontFamily: 'Roboto', // Tipografía suavizada
-            fontWeight: FontWeight.w300, // Peso de la fuente más ligero
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w300,
+            color: AppColors.text,
           ),
         ),
-        centerTitle: true, // Centrar el título en el AppBar
-        backgroundColor: Colors.teal, // Color del AppBar
+        centerTitle: true,
+        backgroundColor: AppColors.button,
+        elevation: 0,
       ),
       body: Container(
-        color: Color(0xFF7FFFD4), // Fondo verde aguamarina
+        color: AppColors.base,
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(24.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'Regístrate en EcoCycle',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal[900], // Color del texto
-                    fontFamily: 'Roboto', // Tipografía suavizada
-                  ),
+                Image.asset(
+                  'assets/images/logo_ecocycle.png',
+                  width: 150,
+                  height: 150,
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: 32),
                 TextField(
                   controller: _emailController,
                   decoration: InputDecoration(
                     labelText: 'Correo Electrónico',
-                    labelStyle: TextStyle(
-                      color: Colors.teal[800],
-                      fontFamily: 'Roboto',
-                    ),
+                    labelStyle: TextStyle(color: AppColors.text),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.teal),
+                      borderSide: BorderSide(color: AppColors.border),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.teal, width: 2),
+                      borderSide: BorderSide(color: AppColors.button, width: 2),
                     ),
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: AppColors.white.withOpacity(0.9),
                   ),
                 ),
                 SizedBox(height: 16),
@@ -64,20 +62,17 @@ class RegisterScreen extends StatelessWidget {
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Contraseña',
-                    labelStyle: TextStyle(
-                      color: Colors.teal[800],
-                      fontFamily: 'Roboto',
-                    ),
+                    labelStyle: TextStyle(color: AppColors.text),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.teal),
+                      borderSide: BorderSide(color: AppColors.border),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.teal, width: 2),
+                      borderSide: BorderSide(color: AppColors.button, width: 2),
                     ),
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: AppColors.white.withOpacity(0.9),
                   ),
                 ),
                 SizedBox(height: 16),
@@ -86,36 +81,26 @@ class RegisterScreen extends StatelessWidget {
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Confirmar Contraseña',
-                    labelStyle: TextStyle(
-                      color: Colors.teal[800],
-                      fontFamily: 'Roboto',
-                    ),
+                    labelStyle: TextStyle(color: AppColors.text),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.teal),
+                      borderSide: BorderSide(color: AppColors.border),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.teal, width: 2),
+                      borderSide: BorderSide(color: AppColors.button, width: 2),
                     ),
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: AppColors.white.withOpacity(0.9),
                   ),
                 ),
-                SizedBox(height: 24),
+                SizedBox(height: 32),
                 ElevatedButton(
-                  onPressed: () {
-                    // Lógica para registrar usuario
-                    String email = _emailController.text;
-                    String password = _passwordController.text;
-                    String confirmPassword = _confirmPasswordController.text;
-                    print(
-                      'Email: $email, Password: $password, Confirm Password: $confirmPassword',
-                    );
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.teal, // Color del botón
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    backgroundColor: AppColors.button,
+                    foregroundColor: AppColors.text,
+                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
