@@ -1,3 +1,4 @@
+import 'package:eco_cycle_app/collection_stats_screen.dart';
 import 'package:flutter/material.dart';
 import 'register_screen.dart';
 import 'forgot_password_screen.dart';
@@ -81,7 +82,14 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(height: 32),
                 // Botón de Iniciar Sesión
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CollectionStatsScreen(),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.button,
                     foregroundColor: AppColors.text,
